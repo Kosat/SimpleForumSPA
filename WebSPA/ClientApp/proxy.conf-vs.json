@@ -1,0 +1,17 @@
+{
+  "/account/*": {
+    "target": "http://localhost:5002",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/forum/*": {
+    "target": "http://localhost:5003",
+    "pathRewrite": {
+      "^/forum": "/api/v1/forum"
+    },
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

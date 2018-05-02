@@ -1,0 +1,54 @@
+// Options
+$enable-caret : true;
+$enable-rounded : false;
+$enable-shadows : true;
+$enable-gradients : false;
+$enable-transitions : true;
+$enable-grid-classes : true;
+$enable-print-styles : true;
+
+//Fonts
+$font-family-base: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; $font-family-monospace: Monaco, Consolas,"Liberation Mono", "Courier New", monospace;
+$font-size-base: .9375rem;
+$font-size-lg: 1.125rem;
+$font-size-sm: .875rem;
+$line-height-base: 1.5;
+
+// Colors
+$white:    #fff !default;
+$black: #000 !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$blue: #467fcf;
+$azure: #45aaf2;
+$green: #5eba00;
+
+// Text
+$text-muted: #9aa0ac;
+$text-muted-dark: #6e7687;
+
+$primary: $blue;
+$secondary: $gray-600;
+$success: $green;
+$info: $azure;
+$light: $gray-100;
+$dark: $gray-800;
+
+$body-bg: #f5f7fb;
+$body-color: $gray-700;
+
+// Borders
+$border-color: rgba(0, 40, 100, .12);
+$info-border-color: #d0d0d0;
+
+// Dropdowns
+$dropdown-border-color: $border-color;
+$dropdown-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+

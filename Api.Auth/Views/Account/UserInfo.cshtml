@@ -1,0 +1,25 @@
+﻿
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div>
+                @if (ViewBag.IsLoggedIn)
+                {
+                    <div class="alert alert-success" role="alert">
+                        <p>Successfully logged in as <strong> @ViewBag.UserEmail </strong>.</p>
+                        <p>Roles: <strong>@ViewBag.UserRoles</strong></p>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <h4>User is not logged in.</h4>
+                    </div>
+                }
+                <a asp-action="Register" class="align-self-end mr-auto">Register</a><span>  or  </span>
+                <a asp-action="Login" class="align-self-end mr-auto">Login</a><span> as a Different User</span>
+
+            </div>
+        </div>
+    </div>
+</div>

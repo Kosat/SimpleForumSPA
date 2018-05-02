@@ -1,0 +1,35 @@
+<div *ngIf="data$ | async as data; else loading" class="card">
+    <ul>
+        <li>
+            <div class="d-flex">
+                <app-gravatar [email]="data.userCreatedEmail" [size]="32" class="mr-2 mt-2"></app-gravatar>
+                <div>
+                    <strong>{{ data.userCreatedEmail }}   </strong><span class="text-muted">{{ data.timeCreated | date:'dd/MM/yyyy hh:mm'}} UTC</span>
+                    <div><span class="subject-title">{{ data.subject }}</span></div>
+                    <div>{{ data.content }}</div>
+                </div>
+            </div>
+        </li>
+        <li *ngFor="let reply of replies$ | async">
+            <div class="d-flex">
+                <app-gravatar [email]="reply.userCreatedEmail" [size]="32" class="mr-2 mt-2"></app-gravatar>
+                <div class="ml-2">
+                    <strong>{{ reply.userCreatedEmail }}   </strong> <span class="text-muted">{{ reply.timeCreated | date:'dd/MM/yyyy hh:mm'}} UTC</span>
+                    <div>
+                        {{ reply.content }}
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <form #ctForm="ngForm" (ngSubmit)="onAddReply()">
+      <div class="row mt-md-8 mx-md-2">
+        <input type="text" class="form-control col" [(ngModel)]="newReplyText" id="inpReplyText" name="inpReplyText" #inpReplyText="ngModel" placeholder="Let us know what you think..." required minlength="5">
+        <button type="submit" class="btn btn-success col-auto ml-md-2" [disabled]="!ctForm.form.valid">Submit</button>
+      </div>
+    </form>
+</div>
+<ng-template #loading>
+    Loading thread...
+</ng-template>

@@ -1,0 +1,36 @@
+<div class="header py-4 box-shadow">
+  <div class="container">
+    <div class="d-flex align-items-center">
+      <div id="logotext" class="my-0 mr-md-auto">
+        <a class="text-dark" href="/">SimpleForum</a>
+      </div>
+      <div class="my-2 my-md-0 mr-md-3">
+        <a class="menu-item p-2 text-dark" href="javascript:void(0)" [routerLink]="['/forum']" routerLinkActive="active">Forum</a>
+        <a class="menu-item p-2 text-dark" href="javascript:void(0)" [routerLink]="['/users']" routerLinkActive="active">Users</a>
+      </div>
+
+      <!-- User profile-->
+      <a *ngIf="!authenticated" class="btn btn-outline-primary" (click)="login($event)">Sign in</a>
+      <div class="btn-group" dropdown [autoClose]="true" [isOpen]="isUserDropdownOpened" (isOpenChange)="toggleDropdown($event)">
+        <a *ngIf="authenticated" href="javascript:void(0)" dropdownToggle class="nav-link p-0 pl-5 d-flex align-items-center" id="button-user-profile" aria-controls="dropdown-user-profile">
+          <!-- <span class="avatar"> -->
+            <app-gravatar [email]="userName" [size]="32" [isCircled]="true"></app-gravatar>
+          <!-- </span> -->
+          <span class="ml-2 d-none d-md-block">
+            <span class="text-dark">{{userName}}</span>
+            <small class="text-muted d-block mt-0">{{role | titlecase}}</small>
+          </span>
+        </a>
+        <ul id="dropdown-user-profile" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-user-profile">
+          <li role="menuitem">
+            <a class="dropdown-item" href="javascript:void(0)" (click)="logout($event)">
+              <i class="dropdown-icon fa fa-sign-out"></i> Sign out
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!--END User profile-->
+
+    </div>
+  </div>
+</div>

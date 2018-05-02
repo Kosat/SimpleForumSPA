@@ -1,0 +1,17 @@
+<div class="page">
+    <div class="container text-center">
+      <div class="display-1 text-muted mb-5"><i class="si si-exclamation"></i> {{ code }}</div>
+
+      <h1 class="h2 mb-3">Error page.</h1>
+      <p class="h4 text-muted font-weight-normal mb-7">{{ message }}&hellip;</p>
+
+      <a class="btn btn-primary" href="javascript:void(0)" (click)="back($event)">
+        Go back
+      </a>
+      <span class="mx-md-2">or</span>
+      <a class="btn btn-primary" [routerLink]="['/']">
+        Go home
+      </a>
+
+    </div>
+</div>

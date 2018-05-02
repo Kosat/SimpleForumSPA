@@ -1,0 +1,43 @@
+<div *ngIf="data !== null; else loading" class="container card">
+  <div *ngIf="threadId===-1;else editExistingHeader" class="d-flex align-items-end">
+      <h3 class="mr-auto">Create Thread</h3>
+  </div>
+  <ng-template #editExistingHeader>
+    <h3 class="mr-auto">Edit Thread [{{threadId}}]</h3>
+  </ng-template>
+
+  <div class="p-md-2 mt-md-4">
+    <form #ctForm="ngForm" (ngSubmit)="onCreateOrEditThread()">
+      <fieldset class="form-group">
+        <label for="inpSubject">Subject</label>
+        <input type="text" class="form-control" [(ngModel)]="data.subject" id="inpSubject" name="inpSubject" #inpSubject="ngModel" required minlength="5">
+        <div *ngIf="inpSubject.invalid && (inpSubject.dirty || inpSubject.touched)" class="text-danger">
+          <span *ngIf="inpSubject.errors.required">
+            Subject is required.
+          </span>
+          <span *ngIf="inpSubject.errors.minlength">
+            Must be at least 5 characters long.
+          </span>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="inpContent">Content</label>
+        <textarea class="form-control" [(ngModel)]="data.content" id="inpContent" name="inpContent" #inpContent="ngModel" rows="3" required minlength="5"></textarea>
+        <div *ngIf="inpContent.invalid && (inpContent.dirty || inpContent.touched)" class="text-danger">
+            <span *ngIf="inpContent.errors.required">
+              Content is required.
+            </span>
+            <span *ngIf="inpContent.errors.minlength">
+              Must be at least 5 characters long.
+            </span>
+          </div>
+      </fieldset>
+      <div class="card-footer text-right">
+        <button type="submit" class="btn btn-success" [disabled]="!ctForm.form.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<ng-template #loading>
+  Loading thread data...
+</ng-template>

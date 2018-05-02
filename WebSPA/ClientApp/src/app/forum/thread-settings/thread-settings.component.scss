@@ -1,0 +1,14 @@
+@import '~css/_variables.scss';
+
+.thread-settings {
+    color: $text-muted;
+    &:hover {
+        color: $gray-800;
+    };
+    > i {
+      font-size: 1.5rem
+    }
+    ul > i {
+      font-size: 0.9rem
+    }
+}

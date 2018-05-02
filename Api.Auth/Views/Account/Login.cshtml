@@ -1,0 +1,45 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <h3 class="mb-0">Login</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@Model.ReturnUrl" method="post">
+                        <fieldset class="form-group">
+                            <label for="Email" class="sr-only">Username</label>
+                            <input asp-for="Email" type="email" class="form-control form-control-lg rounded-0" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="Password" class="sr-only">Password</label>
+                            <input asp-for="Password" type="password" class="form-control form-control-lg rounded-0" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="d-flex flex-row">
+                                <a asp-action="Register" class="align-self-end mr-auto" asp-route-returnurl="@Model.ReturnUrl">Register as a New User</a>
+                                <button type="submit" class="btn btn-success btn-lg rounded-0 align-self-end">Login</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

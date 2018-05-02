@@ -1,0 +1,15 @@
+<div *ngIf="isModerator()" dropdown placement="top left" container="body" [autoClose]="true" [isOpen]="isUserDropdownOpened" (isOpenChange)="toggleDropdown($event)">
+    <a dropdownToggle class="thread-settings" id="dropdown-thread-actions-button" href="javascript:void(0)">
+        <i class="fa fa-ellipsis-v px-md-2"></i>
+    </a>
+    <ul id="dropdown-thread-actions" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdown-thread-actions-button">
+        <li role="menuitem">
+            <a class="dropdown-item" *ngIf="isModerator()" (click)="edit($event)" href="javascript:void(0)">
+                <i class="dropdown-icon fa fa-edit"></i> Edit
+            </a>
+            <a class="dropdown-item" *ngIf="isAdmin()" (click)="delete($event)" href="javascript:void(0)">
+                <i class="dropdown-icon fa fa-sign-out"></i> Delete
+            </a>
+        </li>
+    </ul>
+</div>

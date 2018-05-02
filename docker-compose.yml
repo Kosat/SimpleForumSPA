@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  test.sql.server:
+    image: microsoft/mssql-server-linux:2017-latest
+  api.auth:
+    image: apiauth
+    build:
+      context: .
+      dockerfile: Api.Auth/Dockerfile
+  api.forum:
+    image: apiforum
+    build:
+      context: .
+      dockerfile: Api.Forum/Dockerfile
+  webspa:
+    image: webspa
+    build:
+      context: .
+      dockerfile: WebSPA/Dockerfile

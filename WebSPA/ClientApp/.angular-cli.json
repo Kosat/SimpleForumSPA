@@ -1,0 +1,62 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "WebSPA"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        { "glob":"**/*.js", "input":"../node_modules/oidc-client/dist/","output":"./"},
+        { "glob": "**/*", "input": "./assets/", "output": "./assets/" },
+        { "glob": "favicon.ico", "input": "./assets", "output": "./" },
+        { "glob": "auth.html", "input": "./assets", "output": "./", "allowOutsideOutDir": true },
+        { "glob": "silent-renew.html", "input": "./assets", "output": "./" },
+        { "glob": "appsettings.endpoints.json", "input": "./assets", "output": "./" },
+        { "glob": "**/*.js", "input": "./assets/scripts/", "output": "./"}
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "css/main.scss"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "defaults": {
+    "styleExt": "scss",
+    "component": {},
+    "build": {
+      "progress": true
+    },
+    "serve": {
+      "port": 5001,
+      "host": "localhost"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  
+  api.auth:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5002
+      - "DbConnectionString=Server=tcp:test.sql.server,1433;Database=SimpleForum-Api.Auth-v1;User Id=sa;Password=Pass@word"
+      - "Endpoints:Api_Auth=http://localhost:5002"
+      - "Endpoints:Spa=http://webspa:5001"
+      - "Endpoints:Spa_External=http://localhost:5001"
+    ports:
+      - "5002:5002"
+    depends_on:
+      - test.sql.server
+
+  api.forum:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5003
+      - "DbConnectionString=Server=tcp:test.sql.server,1433;Database=SimpleForum-Api.Forum-v1;User Id=sa;Password=Pass@word"
+      - "Endpoints:Api_Auth=http://api.auth:5002"
+      - "Endpoints:Spa=http://webspa:5001"
+    ports:
+      - "5003:5003"
+    depends_on:
+      - test.sql.server
+      - api.auth
+
+  webspa:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5001
+      - ENV_IS_IN_DOCKER=True
+      - "Endpoints:Api_Auth=http://localhost:5002"
+      - "Endpoints:Spa=http://localhost:5001"
+    ports:
+      - "5001:5001"
+    depends_on:
+      - api.forum
+      - api.auth
+
+  test.sql.server:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+
+
+

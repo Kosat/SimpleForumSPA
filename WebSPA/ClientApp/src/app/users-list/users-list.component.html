@@ -1,0 +1,26 @@
+<div class="container card">
+  <div class="pl-md-2">
+    <h3>Users list</h3>
+  </div>
+
+    <table class='table mt-md-4' *ngIf="userslist">
+        <thead>
+            <tr>
+                <th>Avatar</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userslist">
+                <td>
+                    <app-gravatar [email]="user.name" [size]="32"></app-gravatar>
+                </td>
+                <td>{{ user.id | slice:0:6 }}...</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.roles }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

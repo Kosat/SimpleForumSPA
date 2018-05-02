@@ -1,0 +1,29 @@
+@import '~css/_variables.scss';
+
+.header {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background: $white;
+    border-bottom: 1px solid rgba(0, 40, 100, 0.12);
+    #logotext {
+        font-family: 'Roboto Slab', serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        &>a:hover {
+            text-decoration: none;
+        }
+    }
+    .active {
+        border-color: $gray-400;
+        text-decoration: none;
+    }
+}
+
+.menu-item {
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+    &:hover {
+        border-color: $blue;
+    }
+}

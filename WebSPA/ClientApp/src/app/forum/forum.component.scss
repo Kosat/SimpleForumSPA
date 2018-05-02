@@ -1,0 +1,11 @@
+@import '~css/_variables.scss';
+
+.forum-table-row {
+    border-bottom: 1px solid $info-border-color;
+    &:last-of-type {
+        border-bottom: 0px solid transparent;
+    }
+    a {
+        color: inherit;
+    }
+}

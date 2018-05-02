@@ -1,0 +1,17 @@
+{
+  "/account/*": {
+    "target": "http://api.auth:5002",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/forum/*": {
+    "target": "http://api.forum:5003",
+    "pathRewrite": {
+      "^/forum": "/api/v1/forum"
+    },
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

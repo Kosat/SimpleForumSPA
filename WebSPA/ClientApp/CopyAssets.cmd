@@ -1,0 +1,1 @@
+copyfiles -u 2 ../wwwroot/**/* ./src/assets/ & copyfiles -u 1 ../appsettings.endpoints.json ./src/assets/

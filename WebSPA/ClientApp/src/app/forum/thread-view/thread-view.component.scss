@@ -1,0 +1,28 @@
+@import '~css/_variables.scss';
+
+ul {
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    line-height: 1.5;
+    color: $gray-700;
+    li {
+      margin: 1rem;
+      margin-left: 60px;
+      &:first-child {
+        margin-left: 0;
+        padding: 1rem;
+        border: 1px solid $info-border-color;
+      }
+      .subject-title {
+        background-color: $gray-100;
+        margin-bottom: 0.7rem;
+      }
+    }
+    strong {
+      font-size: $font-size-sm;
+    }
+}
+
+
+

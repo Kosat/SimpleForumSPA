@@ -1,0 +1,33 @@
+<div *ngIf="data$ | async as data; else loading" class="container card">
+    <div class="d-flex align-items-end pl-md-2">
+        <h3 class="mr-auto mb-0 align-self-center">Forum Threads</h3>
+        <button *ngIf="isModerator()" class="btn btn btn-outline-primary btn-sm align-self-end align-self-center" [routerLink]="['/forum/thread-create',-1]" >Create</button>
+    </div>
+    <div class="p-md-2 mt-md-4">
+        <div *ngFor="let thread of data" class="forum-table-row row p-2">
+            <div class="d-none d-md-block align-self-center pr-2">
+                <app-gravatar [email]="thread.userCreatedEmail" [size]="32"></app-gravatar>
+            </div>
+            <div class="mr-auto">
+                <div>
+                  <a [routerLink]="['/forum/thread-view', thread.id]" href="javascript:void(0)">{{thread.subject}}</a>
+                </div>
+                <div class="small text-muted">
+                    Created by: {{thread.userCreatedEmail}}
+                </div>
+            </div>
+            <div class="d-none d-md-block mr-md-4">
+                <div class="text-dark float-right">{{thread.repliesCount}}</div>
+                <div class="small text-muted">
+                    Replies
+                </div>
+            </div>
+
+            <app-thread-settings class="align-self-center px-md-2"  [threadViewModel]="thread" (deleteEvent)="onDeleteThread($event)"></app-thread-settings>
+
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+  Loading threads...
+</ng-template>

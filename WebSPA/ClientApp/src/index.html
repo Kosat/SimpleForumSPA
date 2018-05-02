@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>WebSPA</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style type="text/css">
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .loader-container {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+    }
+
+    .loader {
+      margin-bottom: 6px;
+      border: 8px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 8px solid grey;
+      border-bottom: 8px solid grey;
+      width: 62px;
+      height: 62px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script>window.__theme = 'bs4';</script>
+</head>
+<body>
+  <app-root>
+    <div class="loader-container">
+      <div class="loader"></div>
+      <p>Loading...</p>
+    </div>
+  </app-root>
+</body>
+</html>
