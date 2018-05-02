@@ -32,7 +32,7 @@ Api.Auth and Api.Forum create their own databases in a local MS SQL Server DBMS 
 
 When running on host machine it will use the local __LocalDB__ instance. And when in Docker, it will utilize a separate `mssql-server-linux` container.
 
-![ach](./SimpleForum_arch.png)
+![ach](./DOCS/SimpleForum_arch.png)
 
 ## Disclaimer
 This project is a sole playground which is not intended to be published anywhere. So, not the SPA part nor the .NET code contain proper configuration to be built for production. Even the docker containers that run the services are based on `dotnet:2.1-sdk` which is not intended for any kind of production.
@@ -58,17 +58,13 @@ The missing file seems to be part of a third party library. TS files in publishe
 ```
 
 ## Preview
-![preview](./SimpleForumSPA_Preview.gif)
+![preview](./DOCS/SimpleForumSPA_Preview.gif)
 
 ## Usage
 
 ### From console
 ```CMD
 .\StartAll.ps1
-```
-or
-```CMD
-.\StartAll.cmd
 ```
 
 This will spawn three new console procesess each running an instance of a microservice (Api.Auth, Api.Forum and WebSpa) hosted in Kastrel (withouth integration with IIS).
