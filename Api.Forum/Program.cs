@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
+using Serilog.Sinks.Elasticsearch;
 using Serilog.Sinks.SystemConsole.Themes;
 
 namespace Api.Forum
@@ -24,7 +25,15 @@ namespace Api.Forum
 		        .MinimumLevel.Override("System", LogEventLevel.Warning)
 		        .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
 		        .Enrich.FromLogContext()
-		        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate)
+	          .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://elk_elastic:9200"))
+	          {
+	            IndexFormat = "serilog-{0:yyyy.MM.dd}",
+	            AutoRegisterTemplate = true,
+	            AutoRegisterTemplateVersion = AutoRegisterTemplateVersion.ESv6
+	          })
+	          .Enrich.WithMachineName()
+	          .Enrich.FromLogContext()
+            .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate)
 		        .CreateLogger();
 
 			BuildWebHost(args).Run();

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 services:
   
@@ -12,6 +12,8 @@ services:
       - "Endpoints:Spa_External=http://localhost:5001"
     ports:
       - "5002:5002"
+    networks:
+      - nat
     depends_on:
       - test.sql.server
 
@@ -24,6 +26,8 @@ services:
       - "Endpoints:Spa=http://webspa:5001"
     ports:
       - "5003:5003"
+    networks:
+      - nat
     depends_on:
       - test.sql.server
       - api.auth
@@ -37,6 +41,8 @@ services:
       - "Endpoints:Spa=http://localhost:5001"
     ports:
       - "5001:5001"
+    networks:
+      - nat
     depends_on:
       - api.forum
       - api.auth
@@ -47,6 +53,26 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - "1433:1433"
-
-
+    networks:
+      - nat
+  elk_elastic:
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - "ELASTIC_NAME:name"
+      - "ELASTIC_PASSWORD:pass"
+      - "ES_JAVA_OPTS:-Xmx256m -Xms256m"
+    networks:
+      - nat
+  elk_kibana:
+    ports:
+      - "5601:5601"
+    networks:
+      - nat
+    depends_on:
+      - elk_elastic
+networks:
+  nat:
+    driver: bridge
 

@@ -1,0 +1,33 @@
+{
+  "name": "logtrail",
+  "version": "0.1.27",
+  "description": "Plugin to view, search & tail logs in Kibana",
+  "main": "index.js",
+  "kibana": {
+    "version": "6.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sivasamyk/logtrail.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sivasamyk/logtrail/issues"
+  },
+  "dependencies": {
+    "ansi-to-html": "^0.6.4",
+    "handlebars": "4.0.6",
+    "lodash.escape": "4.0.1",
+    "lodash.get": "4.4.2",
+    "lodash.set": "4.3.2",
+    "sugar-date": "1.5.1"
+  },
+  "build": {
+    "git": {
+      "count": "368",
+      "sha": "4ff9095",
+      "date": "Sun, 29 Apr 2018 12:29:27 +0530"
+    },
+    "date": "Sun Apr 29 2018 12:30:16 GMT+0530 (IST)"
+  }
+}

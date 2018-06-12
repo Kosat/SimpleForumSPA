@@ -19,18 +19,25 @@ The solution consists of 3 services:
 * Api.Auth - An ASP .NET webservice responsible for authentication/authorization. Uses IdenttityServer4 to issue/verify JWT tokens. Has Login/Register web forms (Razor). Also has a REST service to give away the list of all users and their roles to be deisplayed in WebSPA.
 * Api.Forum - A WebApi with CRUD to manage threads/replies. The access to the API is regulated by roles. 
 
+And stores logs aggregated from services/containers into ElasticSearch:
+* Elasticsearch container
+* Kibana + LogTrail
+
 Api.Auth and Api.Forum create their own databases in a local MS SQL Server DBMS instance. 
 `SimpleForum-Api.Auth-v1` and `SimpleForum-Api.Forum-v1` correspondingly.
 
 
-| Service    |  Binding               | In Docker              |
-|------------|:---------------------- |:-----------------------|
-|  WebSPA    |  http://localhost:5001 |  http://WebSPA:5001    |
-|  Api.Auth  |  http://localhost:5002 |  http://api.auth:5002  |
-|  Api.Forum |  http://localhost:5003 |  http://api.forum:5003 |
-| sql.server |  (localdb)             |  test.sql.server,1433  |
+| Service    |  Binding               | In Docker                |
+|------------|:---------------------- |:-------------------------|
+|  WebSPA    |  http://localhost:5001 |  http://WebSPA:5001      |
+|  Api.Auth  |  http://localhost:5002 |  http://api.auth:5002    |
+|  Api.Forum |  http://localhost:5003 |  http://api.forum:5003   |
+| sql.server |  (localdb)             |  test.sql.server,1433    |
+|    elastic |  http://localhost:9200 |  http://elk_elastic:9200 |
+|     kibana |  http://localhost:5601 |  http://elk_kibana:5601  |
 
 When running on host machine it will use the local __LocalDB__ instance. And when in Docker, it will utilize a separate `mssql-server-linux` container.
+> Note: ElasticSearch and Kibana containers take a long time to start. Other (forum) containers are not waiting for them. 
 
 ![ach](./DOCS/SimpleForum_arch.png)
 
@@ -99,6 +106,9 @@ npm ng:prestart
 npm ng:start
 ```
 >Note: You need the latest version of `nodeJS` installed on your machine in order to use `npm`.
+
+## LogTrail 
+![LogTrail](./DOCS/LogTrail_Kibana.png)
 
 ## License
 

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 services:
   test.sql.server:
@@ -18,3 +18,10 @@ services:
     build:
       context: .
       dockerfile: WebSPA/Dockerfile
+  elk_elastic:
+    build:
+      context: elasticsearch/
+  elk_kibana:
+    build:
+      context: kibana/
+
