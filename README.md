@@ -47,7 +47,7 @@ Also, there is no token expiration/renewal handling.
 
 ## Prerequisites
 + [Docker for Windows](https://www.docker.com/docker-windows)
-+ [ASP .NET Core SDK 2.1.preview-2](https://blogs.msdn.microsoft.com/dotnet/2018/04/11/announcing-net-core-2-1-preview-2/)
++ [ASP .NET Core SDK 2.1.300](https://www.microsoft.com/net/download/windows)
 + [Node.Js](https://nodejs.org/en/)
 + [LocalDB](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-2016-express-localdb?view=sql-server-2017)
 
